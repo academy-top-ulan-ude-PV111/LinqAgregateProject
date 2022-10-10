@@ -45,6 +45,27 @@
 
             int sumSqr = persons.Aggregate((x, y) => new Person { Age = x.Age + y.Age * y.Age }).Age;
             Console.WriteLine(sumSqr);
+            Console.WriteLine(new String('-', 10));
+
+            var personsSkip3 = persons.SkipLast(3);
+            foreach (var p in personsSkip3)
+                Console.WriteLine($"{p.Name} {p.Age}");
+            Console.WriteLine(new String('-', 10));
+
+            var personsSkipWhile = persons.SkipWhile(p => p.Age > 20);
+            foreach (var p in personsSkipWhile)
+                Console.WriteLine($"{p.Name} {p.Age}");
+            Console.WriteLine(new String('-', 10));
+
+            var personsSkip3Take3 = persons.Skip(3).Take(3);
+            foreach (var p in personsSkip3Take3)
+                Console.WriteLine($"{p.Name} {p.Age}");
+            Console.WriteLine(new String('-', 10));
+
+            var personsSkipWhileTakeWhile = persons.SkipWhile(p => p.Age > 20).Skip(1).TakeWhile(p => p.Age > 20);
+            foreach (var p in personsSkipWhileTakeWhile)
+                Console.WriteLine($"{p.Name} {p.Age}");
+            Console.WriteLine(new String('-', 10));
         }
     }
 }
